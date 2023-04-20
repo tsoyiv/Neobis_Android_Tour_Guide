@@ -5,28 +5,28 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.example.map_app.databinding.ActivityMainBinding
 
 class MainActivity : FragmentActivity() {
 
-    private lateinit var adapter: NameAdapter
-    private lateinit var viewPager: ViewPager2
-    private lateinit var tabLayout: TabLayout
-    private val tabNames: Array<String> = arrayOf(
+    private val tabTitle: Array<String> = arrayOf(
         "Рестораны",
         "Фитнес центры",
         "Кинотеатры",
     )
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        adapter = NameAdapter(this)
-        viewPager = findViewById(R.id.pager)
-        viewPager.adapter = adapter
+        val pager = binding.viewPager2
+        val tb = binding.tabLayout
+        pager.adapter = MainAdapter(supportFragmentManager, lifecycle)
 
-        tabLayout = findViewById(R.id.tab_layout)
-        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = tabNames[position]
+        TabLayoutMediator(tb, pager) { tab, position ->
+            tab.text = tabTitle[position]
         }.attach()
     }
 }
