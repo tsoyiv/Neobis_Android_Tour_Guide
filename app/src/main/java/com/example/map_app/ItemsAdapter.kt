@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.map_app.databinding.ItemViewBinding
 
-class MyAdapter(private val context: Context, private val items: List<Item>) :
-    RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
+class ItemsAdapter(private val context: Context, private val items: List<Item>) :
+    RecyclerView.Adapter<ItemsAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val inflater = LayoutInflater.from(context)

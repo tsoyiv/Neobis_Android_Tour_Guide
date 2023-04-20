@@ -34,6 +34,6 @@ class RestFragment : Fragment() {
         items.add(Item("Кайф", "Проспект Чуй 136", R.drawable.f, "1.5 km", "Открыт до 24:00"))
 
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = MyAdapter(requireContext(), items)
+        recyclerView.adapter = ItemsAdapter(requireContext(), items)
     }
 }
